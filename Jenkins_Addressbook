@@ -7,7 +7,6 @@ pipeline {
      tools {
         maven  'My MVN'
         jdk  'MyJavac'
-        Git  'MyGit'
     }
    
      stages {
