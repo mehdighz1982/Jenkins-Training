@@ -7,14 +7,12 @@ pipeline {
      tools {
         maven  'My MVN'
         jdk  'MyJavac'
-        Git  'MyGit'
     }
    
      stages {
        stage ('check out from SCM'){
        steps{
            git branch: 'master', url: 'https://github.com/mehdighz1982/Jenkins-Training.git'
-
          }
 }
 }
