@@ -1,13 +1,13 @@
 pipeline {
     agent{
         node {
-            label 'Win_NET'
+            label 'Mammad'
         }
     }
      tools {
-        maven  'My MVN'
-        jdk  'MyJavac'
-    }
+        maven  'MyMVN'
+        jdk    'MyJavac'
+    }  
    
      stages {
        stage ('check out from SCM'){
