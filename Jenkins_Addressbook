@@ -1,56 +1,33 @@
-pipeline {
- agent {
-     node {
-         label 'master'
-     }
+pipeline { 
+    agent {
+        node {
+            label 'master'
+        }
+    }
+    stages {
+        stage ('This is demo stage'){
+         steps {
+             parallel(
+              job1: {
+                             sh """
+                               df -h
+                               cd /tmp
+                               touch demo.txt
+                               """
+     },
+         job2: {
+                 sh """
+                 tmp/demo.txt
+                 """
+          }
+            )
  }
- tools {
-
-     maven 'maven3.6'
-     jdk 'java'
- }
-stages {
-    stage ('checkout code from SCM'){
-     steps{   
-
-         git branch: 'master', url: 'https://github.com/spring-projects/spring-petclinic.git'
-
-      }
     }
-    stage ('Cleaning'){
+    stage ('this is to demo second stage') {
         steps{
-            sh """
-            mvn clean
-            """
-        }
-
+      echo "step 1 of stage 2"
     }
-
-    stage ('Code Compile'){
-        steps{
-            sh """
-            mvn compile
-            """
-        }
-
     }
-    
-     stage ('Run unit test'){
-        steps{
-            sh """
-            mvn test
-            """
-        }
-
     }
-    stage ('packaging '){
-        steps{
-            sh """
-            mvn package
-            """
-        }
-
-    }
-
 }
 }
