@@ -1,4 +1,4 @@
-pipeline {
+'pipeline {
  agent {
      node {
          label 'master'
@@ -12,8 +12,8 @@ pipeline {
  
  tools {
 
-     maven 'maven3.6'
-     jdk 'java'
+     maven 'MyMaven'
+     jdk 'MyJavac'
  }
 stages {
     stage ('checkout code from SCM'){
