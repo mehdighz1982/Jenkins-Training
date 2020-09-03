@@ -1,17 +1,47 @@
 pipeline {
-    agent{
-          label 'Win_NET'
+ agent {
+     node {
+         label 'master'
      }
-    tools {
-       maven  'MyMaven'
-       jdk    'MyJavac'
-     }  
-   stages {
- stage ('check out from SCM')
-{
-    steps{
-           git branch: 'master', url: 'https://github.com/mehdighz1982/Jenkins-Training.git'
-         }
-       }
-     }
+ }
+ tools {
+
+     maven 'MyMaven'
+     jdk 'MyJavac'
+ }
+stages {
+    stage ('checkout code from SCM'){
+     steps{   
+
+         git branch: 'master', url: 'https://github.com/devopstrainers1/addressbook.git'
+
+      }
+    }
+    stage ('Cleaning'){
+        steps{
+            bat """
+            mvn clean
+            """
+        }
+
+    }
+
+    stage ('Code Compile'){
+        steps{
+            bat """
+            mvn compile
+            """
+        }
+
+    }
+    stage ('packaging '){
+        steps{
+            bat """
+            mvn package
+            """
+        }
+
+    }
+
+}
 }
