@@ -1,19 +1,28 @@
 pipeline {
-    agent{
-        node {
-            label 'Win_NET'
-        }
-    }
-     tools {
-        maven  'MyMaven'
-        jdk    'MyJavac'
-    }  
    
+    agent{
+4           label 'Win_NET'
+6   }
+7
+     tools {
+8
+        maven  'MyMaven'
+9
+        jdk    'MyJavac'
+10
+    }  
+11
+   
+12
      stages {
+13
        stage ('check out from SCM'){
+14
        steps{
+15
            git branch: 'master', url: 'https://github.com/mehdighz1982/Jenkins-Training.git'
+16
          }
-}
-}
+       }
+     }
 }
